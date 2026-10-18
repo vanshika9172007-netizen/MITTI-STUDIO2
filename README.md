@@ -1,150 +1,86 @@
+# Mitti Studio (YuvaIntern Junior Frontend Developer Internship)
 
-<h1 align="center">🌿 Mitti Studio</h1>
+A responsive landing page for a beginner pottery studio, with an interactive
+class booking modal. Built with semantic HTML5, mobile-first CSS (Flexbox and
+Grid) and vanilla JavaScript. No frameworks, libraries or build step.
 
-<p align="center">
-  <strong>A Responsive Pottery Studio Website with Interactive Class Booking</strong>
-</p>
+## Project overview
+- **Week 1:** responsive landing page.
+- **Week 2:** accessible, reusable class booking modal (demo only).
 
-<p align="center">
-  A simple and elegant website designed for a pottery studio, featuring
-  a responsive layout, interactive booking modal, and form validation.
-</p>
+## Week 1 features (preserved)
+- Sticky header with logo and navigation, responsive at 700px and 900px
+- Mobile menu toggle (`aria-expanded`, closes on link click and Escape)
+- Header shadow on scroll
+- Hero, features, four-week process, email signup and footer sections
+- Email signup validation with success and error messages
+- Footer year updates automatically
+- Skip link, visible focus styles and `prefers-reduced-motion` support
 
-<hr>
+## Week 2 features: booking modal
+- Opened by the existing **Book a class** and **Reserve your spot** buttons (no extra buttons added)
+- Native `<dialog>` element, styled to match the site
+- Fields: class selection, full name, email, seats (1 to 6)
+- **Confirm demo booking** button and a close button
+- Validation with an error message under each invalid field, a red border,
+  `aria-invalid`, focus moved to the first invalid field, and errors cleared as
+  soon as a field is corrected
+- Success message announced through a live region, clearly stating that nothing is booked
+- Closes with the close button, the Escape key, or a click on the backdrop;
+  clicking inside the dialog (including its padding) does not close it
+- Focus returns to the button that opened the modal
+- Background scrolling is locked while the modal is open; the modal itself
+  scrolls if the screen is short
+- Focus stays inside the modal while it is open
 
-<h2>📌 About the Project</h2>
+## File structure
+```
+mitti-landing/
+  index.html       page structure and the booking <dialog>
+  css/style.css    all styles (Week 2 modal styles are at the end)
+  js/main.js       Week 1 features, then the booking modal section
+  README.md
+```
 
-<p>
-  Mitti Studio is a responsive website created for a pottery studio to
-  showcase its atmosphere, creative process, and pottery classes.
-  The project focuses on building a user-friendly interface using
-  HTML, CSS, and JavaScript.
-</p>
+## Run locally
+Open `index.html` in a browser. No installation needed. (Optionally use the
+VS Code Live Server extension.)
 
-<p>
-  As part of Week 2 of my frontend development internship, I enhanced
-  the website with an interactive class booking modal. Visitors can
-  select a class, enter their details, choose the number of seats, and
-  receive feedback after submitting the form.
-</p>
+## Test the booking modal
+1. Click **Book a class** in the header, then close the modal.
+2. Click **Reserve your spot** in the hero.
+3. Close with the **x** button, then with **Esc**, then by clicking the dimmed area outside the dialog.
+4. Click on the heading or the empty space inside the dialog: it must stay open.
+5. After closing, focus should return to the button you used.
+6. On a narrow screen (under 900px), open the menu and use **Book a class**.
 
-<h2>✨ Features</h2>
+## Test form validation
+1. Open the modal and press **Confirm demo booking** with empty fields: three error messages appear and focus moves to the class field.
+2. Enter spaces only as the name, and `a@b` as the email: both are rejected.
+3. Fix a field: its error disappears immediately.
+4. Fill all fields with valid data: a green demo-only message appears and the page does not reload.
 
-<ul>
-  <li>Responsive layout for desktop, tablet, and mobile screens.</li>
-  <li>Interactive navigation with a mobile menu.</li>
-  <li>Class booking modal with open and close controls.</li>
-  <li>Form validation for required fields and email format.</li>
-  <li>Seat selection with a limited number of seats per demo booking.</li>
-  <li>Clear error messages and submission feedback.</li>
-  <li>Keyboard-friendly controls and focus management.</li>
-  <li>Escape-key support for closing the booking modal.</li>
-  <li>Fallback behavior for browsers without native dialog support.</li>
-  <li>Reduced-motion support for users who prefer fewer animations.</li>
-  <li>Newsletter form validation from the original website.</li>
-</ul>
+## Keyboard controls
+| Key | Action |
+|---|---|
+| Tab / Shift+Tab | Move between modal controls (focus stays inside) |
+| Enter / Space | Activate buttons |
+| Esc | Close the modal |
+| Arrow keys | Change the selected option in the dropdowns |
 
-<h2>🛠️ Technologies Used</h2>
+## Browser compatibility and fallback
+- Native `<dialog>` is supported in current Chrome, Edge, Firefox and Safari.
+- The code checks for `showModal()` and `close()` before using them. If they
+  are missing, the dialog is shown with the `open` attribute, styled as a
+  fixed centred box with a dimmed backdrop, and Escape, backdrop click and
+  focus wrapping are handled by JavaScript.
+- If any modal element is missing from the HTML, the modal code stops quietly and the rest of the site keeps working.
+- Tested in Chromium only (automated checks, including a simulated browser
+  without dialog methods). Firefox and Safari have not been tested.
 
-<ul>
-  <li><strong>HTML5:</strong> Website structure and accessible form elements.</li>
-  <li><strong>CSS3:</strong> Styling, responsive layouts, and modal design.</li>
-  <li><strong>JavaScript:</strong> Modal interactions, form validation, and feedback messages.</li>
-  <li><strong>Visual Studio Code:</strong> Development environment.</li>
-  <li><strong>Live Server:</strong> Local testing and development.</li>
-  <li><strong>Git and GitHub:</strong> Version control and project hosting.</li>
-  <li><strong>Netlify:</strong> Website deployment.</li>
-</ul>
-
-<h2>📂 Project Structure</h2>
-
-<pre>
-mitti-studio/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── main.js
-└── README.md
-</pre>
-
-<h2>🚀 Getting Started</h2>
-
-<p>Follow these steps to run the project locally:</p>
-
-<ol>
-  <li>Clone or download this repository.</li>
-  <li>Open the project folder in Visual Studio Code.</li>
-  <li>Make sure the CSS and JavaScript files are in their correct folders.</li>
-  <li>Open <code>index.html</code> using Live Server, or open it directly in a browser.</li>
-  <li>Explore the website and test the class booking modal.</li>
-</ol>
-
-<h2>🧪 Testing</h2>
-
-<ul>
-  <li>Check that the website loads with its styling and scripts.</li>
-  <li>Open and close the booking modal.</li>
-  <li>Submit the form with empty or invalid values to test validation.</li>
-  <li>Submit valid values and check the success message.</li>
-  <li>Test keyboard navigation, including Tab and Escape.</li>
-  <li>Check the layout at different viewport sizes.</li>
-  <li>Use the browser console to check for JavaScript errors.</li>
-</ul>
-
-<h2>♿ Accessibility and Responsiveness</h2>
-
-<p>
-  The project includes semantic form controls, accessible labels,
-  validation feedback, keyboard interactions, focus management, and
-  responsive styling. It also includes reduced-motion styling and
-  a fallback for browsers that do not support the native HTML dialog API.
-</p>
-
-<p>
-  Accessibility and browser compatibility should be tested across
-  additional browsers and with assistive technologies before making
-  claims of complete compatibility.
-</p>
-
-<h2>⚠️ Limitations</h2>
-
-<ul>
-  <li>The booking form is a frontend demonstration only.</li>
-  <li>No real reservation is created.</li>
-  <li>No email or booking confirmation is sent.</li>
-  <li>No backend, database, or payment system is connected.</li>
-</ul>
-
-<h2>🎯 Learning Outcomes</h2>
-
-<p>
-  This project helped me practise responsive web design, DOM manipulation,
-  JavaScript event handling, client-side form validation, keyboard
-  accessibility, modal behavior, and project documentation.
-  It also strengthened my understanding of testing and maintaining
-  an interactive frontend component.
-</p>
-
-<h2>🌐 Live Demo</h2>
-
-<p>
-  <a href="https://mitti-studio2.netlify.app/">
-    View Mitti Studio on Netlify
-  </a>
-</p>
-
-<p>
-  If the link does not open, check the current site name and deployment
-  status in your Netlify dashboard.
-</p>
-
-<h2>👩‍💻 Author</h2>
-
-<p>
-  Developed as part of a frontend development internship project.
-</p>
-
-<p align="center">
-  Made with 🌱, creativity, and code.
-</p>
+## Limitations of the demo
+- Frontend only: no backend, database, payment or email service.
+- Nothing is saved or sent, and the form is cleared after a valid submission.
+- The class list is placeholder content and there is no real availability check.
+- The fallback does not make the rest of the page inert, so screen reader users
+  on very old browsers can still reach content behind the dialog.
